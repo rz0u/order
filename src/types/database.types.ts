@@ -9,7 +9,100 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      [key: string]: any // Placeholder until generated
+      users: {
+        Row: {
+          id: string
+          username: string
+          display_name: string | null
+          bio: string | null
+          location: string | null
+          phone: string | null
+          avatar_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id: string
+          username: string
+          display_name?: string | null
+          bio?: string | null
+          location?: string | null
+          phone?: string | null
+          avatar_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          username?: string
+          display_name?: string | null
+          bio?: string | null
+          location?: string | null
+          phone?: string | null
+          avatar_url?: string | null
+          created_at?: string
+        }
+      }
+      sticky_notes: {
+        Row: {
+          id: string
+          user_id: string
+          content: string | null
+          color: string | null
+          x_position: number | null
+          y_position: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          content?: string | null
+          color?: string | null
+          x_position?: number | null
+          y_position?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          content?: string | null
+          color?: string | null
+          x_position?: number | null
+          y_position?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      events: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          description: string | null
+          start_time: string
+          end_time: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          description?: string | null
+          start_time: string
+          end_time: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          description?: string | null
+          start_time?: string
+          end_time?: string
+          created_at?: string
+        }
+      }
+      // Other tables mocked similarly as needed
     }
     Views: {
       [_ in never]: never
