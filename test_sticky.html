@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="w-[400px] h-64 overflow-x-auto overflow-y-auto border-4 border-red-500 relative">
+    <div class="min-w-[800px]">
+      <div class="grid grid-cols-[80px_1fr] sticky top-0 z-30">
+        <div class="sticky left-0 bg-blue-500 z-40 border-r h-10">Top Left</div>
+        <div class="bg-blue-300 h-10">Header (700px)</div>
+      </div>
+      <div class="grid grid-cols-[80px_1fr]">
+        <div class="sticky left-0 bg-green-500 z-20 border-r h-20">Row 1 Left</div>
+        <div class="bg-green-300 h-20">Row 1 Right</div>
+      </div>
+      <div class="grid grid-cols-[80px_1fr]">
+        <div class="sticky left-0 bg-yellow-500 z-20 border-r h-20">Row 2 Left</div>
+        <div class="bg-yellow-300 h-20">Row 2 Right</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

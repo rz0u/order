@@ -102,7 +102,75 @@ export interface Database {
           created_at?: string
         }
       }
-      // Other tables mocked similarly as needed
+      todo_lists: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          category: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          category?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          category?: string | null
+          created_at?: string
+        }
+      }
+      todos: {
+        Row: {
+          id: string
+          list_id: string
+          content: string
+          is_completed: boolean | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          list_id: string
+          content: string
+          is_completed?: boolean | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          list_id?: string
+          content?: string
+          is_completed?: boolean | null
+          created_at?: string
+        }
+      }
+      habits: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          current_streak: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          current_streak?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          current_streak?: number | null
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never

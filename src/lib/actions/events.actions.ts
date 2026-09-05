@@ -11,7 +11,7 @@ export async function getEvents(startDate: string, endDate: string): Promise<Eve
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) throw new Error('Unauthorized')
+  if (!user) return []
 
   const { data, error } = await supabase
     .from('events')

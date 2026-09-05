@@ -1,17 +1,15 @@
-import { 
-  Home, 
-  StickyNote, 
-  CheckSquare, 
-  Calendar, 
-  Target, 
-  Users 
-} from 'lucide-react'
+import {
+  Home,
+  StickyNote,
+  CheckSquare,
+  Calendar,
+  Target,
+} from "lucide-react";
 
 export const NAV_LINKS = [
-  { name: 'Dashboard', href: '/dashboard', icon: Home },
-  { name: 'Sticky Notes', href: '/sticky-notes', icon: StickyNote },
-  { name: 'To-Do', href: '/todos', icon: CheckSquare },
-  { name: 'Schedule', href: '/schedule', icon: Calendar },
-  { name: 'Habits', href: '/habits', icon: Target },
-  { name: 'Social', href: '/social', icon: Users },
-]
+  { name: "Dashboard", href: "/", icon: Home },
+  { name: "Schedule", href: "/schedule", icon: Calendar },
+  { name: "To-Do", href: "/todos", icon: CheckSquare },
+  { name: "Sticky Notes", href: "/sticky-notes", icon: StickyNote },
+  { name: "Habits", href: "/habits", icon: Target },
+];

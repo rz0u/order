@@ -1,84 +1,123 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Calendar, CheckSquare, Flame, StickyNote } from 'lucide-react'
-import Link from 'next/link'
+'use client'
 
-export default function DashboardOverview() {
+import { useState, useRef, useEffect } from 'react'
+import { useTheme } from 'next-themes'
+import { useAppPreferences } from '@/lib/hooks/useAppPreferences'
+import { useEvents } from '@/lib/hooks/useEvents'
+
+// Home components
+import { HeroDate } from '@/components/home/HeroDate'
+import { MiniCalendar } from '@/components/home/MiniCalendar'
+import { TodayEvents } from '@/components/home/TodayEvents'
+import { ColourInfo } from '@/components/home/ColourInfo'
+
+// Layout components
+import { DotMenu } from '@/components/layout/DotMenu'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
+
+// Month theme IDs
+const MONTHLY_THEME_IDS = [
+  'month-01','month-02','month-03','month-04','month-05','month-06',
+  'month-07','month-08','month-09','month-10','month-11','month-12',
+]
+
+// Auto-detect monthly theme from current month
+function getCurrentMonthThemeId(): string {
+  const m = new Date().getMonth() + 1 // 1-12
+  return `month-${String(m).padStart(2, '0')}`
+}
+
+export default function DashboardHome() {
+  const { theme, setTheme } = useTheme()
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false)
+  const themeMenuRef = useRef<HTMLDivElement>(null)
+
+  const prefs = useAppPreferences()
+
+  // Load today's events for the month range
+  const monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  const monthEnd = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0)
+  const { data: events = [], isLoading: eventsLoading } = useEvents(monthStart, monthEnd)
+
+  const isMonthlyTheme = MONTHLY_THEME_IDS.includes(theme ?? '')
+  const activeThemeId = theme ?? 'light'
+
+  // On first load: auto-apply the current month's theme if no preference saved
+  useEffect(() => {
+    if (prefs.hydrated && !MONTHLY_THEME_IDS.includes(theme ?? '') && theme === 'light') {
+      const autoTheme = getCurrentMonthThemeId()
+      setTheme(autoTheme)
+    }
+  }, [prefs.hydrated]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const eventDates = events.map((e) => new Date(e.start_time))
+
+  const handleOpenTheme = () => setThemeMenuOpen(true)
+
+  // Compute gradient style for monthly themes
+  const monthGradientStyle = isMonthlyTheme
+    ? {
+        backgroundImage: `var(--month-gradient)`,
+        minHeight: '100vh',
+      }
+    : {
+        minHeight: '100vh',
+      }
+
+  if (!prefs.hydrated) {
+    return <div className="min-h-screen bg-background" />
+  }
+
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold tracking-tight">Welcome back!</h1>
-      <p className="text-muted-foreground -mt-4">Here is an overview of your workspace today.</p>
+    <div
+      className="relative w-full overflow-hidden text-foreground transition-colors duration-700"
+      style={monthGradientStyle}
+    >
+      {/* Dot menu — fixed to vertical centre-left */}
+      <DotMenu
+        numeral={prefs.numeral}
+        layout={prefs.layout}
+        calendarVisible={prefs.calendarVisible}
+        onToggleNumeral={prefs.toggleNumeral}
+        onCycleLayout={prefs.cycleLayout}
+        onToggleCalendar={prefs.toggleCalendar}
+        onOpenTheme={handleOpenTheme}
+      />
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Link href="/schedule">
-          <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Events Today</CardTitle>
-              <Calendar className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">3</div>
-              <p className="text-xs text-muted-foreground">Next: Team Sync at 2 PM</p>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/todos">
-          <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Pending Tasks</CardTitle>
-              <CheckSquare className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">Across 4 lists</p>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/habits">
-          <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Habit Streaks</CardTitle>
-              <Flame className="h-4 w-4 text-orange-500" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">5</div>
-              <p className="text-xs text-muted-foreground">Best: 12 days (Reading)</p>
-            </CardContent>
-          </Card>
-        </Link>
-        <Link href="/sticky-notes">
-          <Card className="hover:bg-muted/50 transition-colors cursor-pointer">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Sticky Notes</CardTitle>
-              <StickyNote className="h-4 w-4 text-yellow-500" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">4</div>
-              <p className="text-xs text-muted-foreground">Active on board</p>
-            </CardContent>
-          </Card>
-        </Link>
+      {/* Floating theme toggle — top right, for quick access */}
+      <div className="absolute top-6 right-6 z-30 opacity-30 hover:opacity-80 transition-opacity">
+        <ThemeToggle />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
-          <CardHeader>
-            <CardTitle>Recent Activity Feed</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Connect to Supabase to see real-time updates from your friends here!
-          </CardContent>
-        </Card>
-        <Card className="col-span-3">
-          <CardHeader>
-            <CardTitle>Quick Add Note</CardTitle>
-          </CardHeader>
-          <CardContent>
-             <textarea 
-               className="w-full h-32 p-3 bg-yellow-100/50 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder:text-yellow-700/50" 
-               placeholder="Jot down a quick thought..."
-             />
-          </CardContent>
-        </Card>
+      {/* Hero date — vertical rules + big numeral */}
+      <div className="relative" style={{ height: '100vh' }}>
+        <HeroDate
+          numeral={prefs.numeral}
+          layout={prefs.layout}
+          isMonthlyTheme={isMonthlyTheme}
+        />
+
+        {/* Bottom-left: mini calendar */}
+        <div className="absolute bottom-8 left-10 z-10 md:bottom-10 md:left-12">
+          <MiniCalendar eventDates={eventDates} />
+        </div>
+
+        {/* Bottom-left (above calendar): today's events — only if calendarVisible */}
+        {prefs.calendarVisible && (
+          <div className="absolute z-10" style={{ bottom: '10rem', left: '2.5rem' }}>
+            <TodayEvents
+              events={events}
+              isLoading={eventsLoading}
+              collapsed={prefs.calendarCollapsed}
+              onToggleCollapsed={prefs.toggleCalendarCollapsed}
+            />
+          </div>
+        )}
+
+        {/* Bottom-right: colour info (monthly themes only) */}
+        <div className="absolute bottom-8 right-8 z-10 md:bottom-10 md:right-10">
+          <ColourInfo isMonthlyTheme={isMonthlyTheme} themeId={activeThemeId} />
+        </div>
       </div>
     </div>
   )

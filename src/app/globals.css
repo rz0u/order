@@ -1,8 +1,49 @@
-@import "tw-animate-css";
+@import "tailwindcss";
 @import "shadcn/tailwind.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --font-display: var(--font-display);
+}
+
 
 @layer utilities {
   .text-balance {
@@ -82,8 +123,803 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
   }
+  /* ──────────────── Catppuccin Mocha ──────────────── */
+  .catppuccin {
+    --background: #1e1e2e;
+    --foreground: #cdd6f4;
+    --card: #181825;
+    --card-foreground: #cdd6f4;
+    --popover: #181825;
+    --popover-foreground: #cdd6f4;
+    --primary: #cba6f7;
+    --primary-foreground: #1e1e2e;
+    --secondary: #313244;
+    --secondary-foreground: #cdd6f4;
+    --muted: #313244;
+    --muted-foreground: #a6adc8;
+    --accent: #45475a;
+    --accent-foreground: #cdd6f4;
+    --destructive: #f38ba8;
+    --border: #45475a;
+    --input: #45475a;
+    --ring: #b4befe;
+    --chart-1: #f5c2e7;
+    --chart-2: #cba6f7;
+    --chart-3: #89b4fa;
+    --chart-4: #a6e3a1;
+    --chart-5: #fab387;
+    --sidebar: #11111b;
+    --sidebar-foreground: #cdd6f4;
+    --sidebar-primary: #cba6f7;
+    --sidebar-primary-foreground: #1e1e2e;
+    --sidebar-accent: #313244;
+    --sidebar-accent-foreground: #cdd6f4;
+    --sidebar-border: #313244;
+    --sidebar-ring: #b4befe;
+  }
+
+  /* ──────────────── Tokyo Night ──────────────── */
+  .tokyo-night {
+    --background: #1a1b26;
+    --foreground: #a9b1d6;
+    --card: #16161e;
+    --card-foreground: #a9b1d6;
+    --popover: #16161e;
+    --popover-foreground: #a9b1d6;
+    --primary: #7aa2f7;
+    --primary-foreground: #1a1b26;
+    --secondary: #292e42;
+    --secondary-foreground: #a9b1d6;
+    --muted: #292e42;
+    --muted-foreground: #565f89;
+    --accent: #33467c;
+    --accent-foreground: #c0caf5;
+    --destructive: #f7768e;
+    --border: #292e42;
+    --input: #33467c;
+    --ring: #7aa2f7;
+    --chart-1: #bb9af7;
+    --chart-2: #7aa2f7;
+    --chart-3: #73daca;
+    --chart-4: #e0af68;
+    --chart-5: #ff9e64;
+    --sidebar: #16161e;
+    --sidebar-foreground: #a9b1d6;
+    --sidebar-primary: #7aa2f7;
+    --sidebar-primary-foreground: #1a1b26;
+    --sidebar-accent: #292e42;
+    --sidebar-accent-foreground: #a9b1d6;
+    --sidebar-border: #292e42;
+    --sidebar-ring: #7aa2f7;
+  }
+
+  /* ──────────────── Dracula ──────────────── */
+  .dracula {
+    --background: #282a36;
+    --foreground: #f8f8f2;
+    --card: #21222c;
+    --card-foreground: #f8f8f2;
+    --popover: #21222c;
+    --popover-foreground: #f8f8f2;
+    --primary: #bd93f9;
+    --primary-foreground: #282a36;
+    --secondary: #44475a;
+    --secondary-foreground: #f8f8f2;
+    --muted: #44475a;
+    --muted-foreground: #6272a4;
+    --accent: #44475a;
+    --accent-foreground: #f8f8f2;
+    --destructive: #ff5555;
+    --border: #44475a;
+    --input: #44475a;
+    --ring: #ff79c6;
+    --chart-1: #ff79c6;
+    --chart-2: #bd93f9;
+    --chart-3: #8be9fd;
+    --chart-4: #50fa7b;
+    --chart-5: #ffb86c;
+    --sidebar: #21222c;
+    --sidebar-foreground: #f8f8f2;
+    --sidebar-primary: #bd93f9;
+    --sidebar-primary-foreground: #282a36;
+    --sidebar-accent: #44475a;
+    --sidebar-accent-foreground: #f8f8f2;
+    --sidebar-border: #44475a;
+    --sidebar-ring: #ff79c6;
+  }
+
+  /* ──────────────── Ayu Dark ──────────────── */
+  .ayu {
+    --background: #0b0e14;
+    --foreground: #bfbdb6;
+    --card: #0d1017;
+    --card-foreground: #bfbdb6;
+    --popover: #0d1017;
+    --popover-foreground: #bfbdb6;
+    --primary: #e6b450;
+    --primary-foreground: #0b0e14;
+    --secondary: #1a1e29;
+    --secondary-foreground: #bfbdb6;
+    --muted: #1a1e29;
+    --muted-foreground: #626d7a;
+    --accent: #1c2330;
+    --accent-foreground: #bfbdb6;
+    --destructive: #d95757;
+    --border: #1c2330;
+    --input: #1c2330;
+    --ring: #e6b450;
+    --chart-1: #e6b450;
+    --chart-2: #59c2ff;
+    --chart-3: #aad94c;
+    --chart-4: #ffb454;
+    --chart-5: #f07178;
+    --sidebar: #0d1017;
+    --sidebar-foreground: #bfbdb6;
+    --sidebar-primary: #e6b450;
+    --sidebar-primary-foreground: #0b0e14;
+    --sidebar-accent: #1a1e29;
+    --sidebar-accent-foreground: #bfbdb6;
+    --sidebar-border: #1c2330;
+    --sidebar-ring: #e6b450;
+  }
+
+  /* ──────────────── Dainty ──────────────── */
+  .dainty {
+    --background: #253040;
+    --foreground: #d4d7dc;
+    --card: #1e2837;
+    --card-foreground: #d4d7dc;
+    --popover: #1e2837;
+    --popover-foreground: #d4d7dc;
+    --primary: #6cb5e4;
+    --primary-foreground: #1e2837;
+    --secondary: #2e3d50;
+    --secondary-foreground: #d4d7dc;
+    --muted: #2e3d50;
+    --muted-foreground: #8899aa;
+    --accent: #344558;
+    --accent-foreground: #d4d7dc;
+    --destructive: #e06c75;
+    --border: #344558;
+    --input: #344558;
+    --ring: #6cb5e4;
+    --chart-1: #6cb5e4;
+    --chart-2: #98c379;
+    --chart-3: #c678dd;
+    --chart-4: #e5c07b;
+    --chart-5: #56b6c2;
+    --sidebar: #1e2837;
+    --sidebar-foreground: #d4d7dc;
+    --sidebar-primary: #6cb5e4;
+    --sidebar-primary-foreground: #1e2837;
+    --sidebar-accent: #2e3d50;
+    --sidebar-accent-foreground: #d4d7dc;
+    --sidebar-border: #2e3d50;
+    --sidebar-ring: #6cb5e4;
+  }
+
+  /* ──────────────── GitHub Dark ──────────────── */
+  .github-dark {
+    --background: #0d1117;
+    --foreground: #e6edf3;
+    --card: #161b22;
+    --card-foreground: #e6edf3;
+    --popover: #161b22;
+    --popover-foreground: #e6edf3;
+    --primary: #2f81f7;
+    --primary-foreground: #ffffff;
+    --secondary: #21262d;
+    --secondary-foreground: #e6edf3;
+    --muted: #21262d;
+    --muted-foreground: #8b949e;
+    --accent: #30363d;
+    --accent-foreground: #e6edf3;
+    --destructive: #f85149;
+    --border: #30363d;
+    --input: #30363d;
+    --ring: #2f81f7;
+    --chart-1: #2f81f7;
+    --chart-2: #3fb950;
+    --chart-3: #d29922;
+    --chart-4: #f85149;
+    --chart-5: #a371f7;
+    --sidebar: #010409;
+    --sidebar-foreground: #e6edf3;
+    --sidebar-primary: #2f81f7;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #21262d;
+    --sidebar-accent-foreground: #e6edf3;
+    --sidebar-border: #21262d;
+    --sidebar-ring: #2f81f7;
+  }
+
+  /* ──────────────── Atom One Dark ──────────────── */
+  .atom-one-dark {
+    --background: #282c34;
+    --foreground: #abb2bf;
+    --card: #21252b;
+    --card-foreground: #abb2bf;
+    --popover: #21252b;
+    --popover-foreground: #abb2bf;
+    --primary: #61afef;
+    --primary-foreground: #282c34;
+    --secondary: #2c323c;
+    --secondary-foreground: #abb2bf;
+    --muted: #2c323c;
+    --muted-foreground: #5c6370;
+    --accent: #3e4451;
+    --accent-foreground: #abb2bf;
+    --destructive: #e06c75;
+    --border: #3e4451;
+    --input: #3e4451;
+    --ring: #61afef;
+    --chart-1: #c678dd;
+    --chart-2: #61afef;
+    --chart-3: #98c379;
+    --chart-4: #e5c07b;
+    --chart-5: #e06c75;
+    --sidebar: #21252b;
+    --sidebar-foreground: #abb2bf;
+    --sidebar-primary: #61afef;
+    --sidebar-primary-foreground: #282c34;
+    --sidebar-accent: #2c323c;
+    --sidebar-accent-foreground: #abb2bf;
+    --sidebar-border: #2c323c;
+    --sidebar-ring: #61afef;
+  }
+
+  /* ──────────────── Houston (Astro) ──────────────── */
+  .houston {
+    --background: #17191e;
+    --foreground: #e0e0e0;
+    --card: #111317;
+    --card-foreground: #e0e0e0;
+    --popover: #111317;
+    --popover-foreground: #e0e0e0;
+    --primary: #ff5d01;
+    --primary-foreground: #ffffff;
+    --secondary: #23262d;
+    --secondary-foreground: #e0e0e0;
+    --muted: #23262d;
+    --muted-foreground: #888b94;
+    --accent: #2d3039;
+    --accent-foreground: #e0e0e0;
+    --destructive: #e53e3e;
+    --border: #2d3039;
+    --input: #2d3039;
+    --ring: #ff5d01;
+    --chart-1: #ff5d01;
+    --chart-2: #e0af68;
+    --chart-3: #9ece6a;
+    --chart-4: #7aa2f7;
+    --chart-5: #bb9af7;
+    --sidebar: #111317;
+    --sidebar-foreground: #e0e0e0;
+    --sidebar-primary: #ff5d01;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #23262d;
+    --sidebar-accent-foreground: #e0e0e0;
+    --sidebar-border: #23262d;
+    --sidebar-ring: #ff5d01;
+  }
+
+  /* ──────────────── Night Owl ──────────────── */
+  .night-owl {
+    --background: #011627;
+    --foreground: #d6deeb;
+    --card: #01111d;
+    --card-foreground: #d6deeb;
+    --popover: #01111d;
+    --popover-foreground: #d6deeb;
+    --primary: #82aaff;
+    --primary-foreground: #011627;
+    --secondary: #1d3b53;
+    --secondary-foreground: #d6deeb;
+    --muted: #1d3b53;
+    --muted-foreground: #637777;
+    --accent: #1d3b53;
+    --accent-foreground: #d6deeb;
+    --destructive: #ef5350;
+    --border: #1d3b53;
+    --input: #1d3b53;
+    --ring: #82aaff;
+    --chart-1: #c792ea;
+    --chart-2: #82aaff;
+    --chart-3: #addb67;
+    --chart-4: #f78c6c;
+    --chart-5: #7fdbca;
+    --sidebar: #01111d;
+    --sidebar-foreground: #d6deeb;
+    --sidebar-primary: #82aaff;
+    --sidebar-primary-foreground: #011627;
+    --sidebar-accent: #1d3b53;
+    --sidebar-accent-foreground: #d6deeb;
+    --sidebar-border: #1d3b53;
+    --sidebar-ring: #82aaff;
+  }
+
+  /* ──────────────── Matcha ──────────────── */
+  .matcha {
+    --background: #1a2019;
+    --foreground: #c8d3c5;
+    --card: #151a14;
+    --card-foreground: #c8d3c5;
+    --popover: #151a14;
+    --popover-foreground: #c8d3c5;
+    --primary: #8fbc8f;
+    --primary-foreground: #1a2019;
+    --secondary: #253024;
+    --secondary-foreground: #c8d3c5;
+    --muted: #253024;
+    --muted-foreground: #7a8c78;
+    --accent: #2e3d2c;
+    --accent-foreground: #c8d3c5;
+    --destructive: #d9534f;
+    --border: #2e3d2c;
+    --input: #2e3d2c;
+    --ring: #8fbc8f;
+    --chart-1: #8fbc8f;
+    --chart-2: #6b8e23;
+    --chart-3: #9acd32;
+    --chart-4: #f0e68c;
+    --chart-5: #deb887;
+    --sidebar: #151a14;
+    --sidebar-foreground: #c8d3c5;
+    --sidebar-primary: #8fbc8f;
+    --sidebar-primary-foreground: #1a2019;
+    --sidebar-accent: #253024;
+    --sidebar-accent-foreground: #c8d3c5;
+    --sidebar-border: #253024;
+    --sidebar-ring: #8fbc8f;
+  }
+
+  /* ──────────────── Monaspace ──────────────── */
+  .monaspace {
+    --background: #1b1d23;
+    --foreground: #d4d4d8;
+    --card: #16181e;
+    --card-foreground: #d4d4d8;
+    --popover: #16181e;
+    --popover-foreground: #d4d4d8;
+    --primary: #79c0ff;
+    --primary-foreground: #1b1d23;
+    --secondary: #272a33;
+    --secondary-foreground: #d4d4d8;
+    --muted: #272a33;
+    --muted-foreground: #7d8590;
+    --accent: #303340;
+    --accent-foreground: #d4d4d8;
+    --destructive: #ff7b72;
+    --border: #303340;
+    --input: #303340;
+    --ring: #79c0ff;
+    --chart-1: #79c0ff;
+    --chart-2: #a5d6ff;
+    --chart-3: #7ee787;
+    --chart-4: #ffa657;
+    --chart-5: #d2a8ff;
+    --sidebar: #16181e;
+    --sidebar-foreground: #d4d4d8;
+    --sidebar-primary: #79c0ff;
+    --sidebar-primary-foreground: #1b1d23;
+    --sidebar-accent: #272a33;
+    --sidebar-accent-foreground: #d4d4d8;
+    --sidebar-border: #272a33;
+    --sidebar-ring: #79c0ff;
+  }
+  /* ──────────────── Monthly Colourways (gradient-only) ──────────────── */
+  /* Each gradient blends current month → previous month diagonally */
+
+  .month-01 { /* January — Midnight Navy ← Dark Teal */
+    --background: #1B3352;
+    --foreground: #f0f4f8;
+    --card: #162a44;
+    --card-foreground: #f0f4f8;
+    --popover: #162a44;
+    --popover-foreground: #f0f4f8;
+    --primary: #7eb8d4;
+    --primary-foreground: #1B3352;
+    --secondary: #243d55;
+    --secondary-foreground: #f0f4f8;
+    --muted: #243d55;
+    --muted-foreground: #8aa3b8;
+    --accent: #2d4a63;
+    --accent-foreground: #f0f4f8;
+    --destructive: #f87171;
+    --border: rgba(240,244,248,0.15);
+    --input: rgba(240,244,248,0.15);
+    --ring: #7eb8d4;
+    --sidebar: #162a44;
+    --sidebar-foreground: #f0f4f8;
+    --sidebar-primary: #7eb8d4;
+    --sidebar-primary-foreground: #1B3352;
+    --sidebar-accent: #243d55;
+    --sidebar-accent-foreground: #f0f4f8;
+    --sidebar-border: rgba(240,244,248,0.10);
+    --sidebar-ring: #7eb8d4;
+    --month-gradient: linear-gradient(135deg, #1B4A40 0%, #1B3352 55%, #0f2240 100%);
+    --month-name: "January";
+    --month-colour-name: "Midnight Navy";
+    --month-colour-hex: "#1B3352";
+    --month-colour-mood: "Depth, stillness, new beginnings";
+  }
+
+  .month-02 { /* February — Lavender Purple ← Midnight Navy */
+    --background: #9B7FD4;
+    --foreground: #1a1230;
+    --card: #8870c0;
+    --card-foreground: #1a1230;
+    --popover: #8870c0;
+    --popover-foreground: #1a1230;
+    --primary: #3d2878;
+    --primary-foreground: #f5f0ff;
+    --secondary: #b09bde;
+    --secondary-foreground: #1a1230;
+    --muted: #b09bde;
+    --muted-foreground: #3d2878;
+    --accent: #c4b2e8;
+    --accent-foreground: #1a1230;
+    --destructive: #be123c;
+    --border: rgba(26,18,48,0.20);
+    --input: rgba(26,18,48,0.20);
+    --ring: #3d2878;
+    --sidebar: #8870c0;
+    --sidebar-foreground: #1a1230;
+    --sidebar-primary: #3d2878;
+    --sidebar-primary-foreground: #f5f0ff;
+    --sidebar-accent: #b09bde;
+    --sidebar-accent-foreground: #1a1230;
+    --sidebar-border: rgba(26,18,48,0.15);
+    --sidebar-ring: #3d2878;
+    --month-gradient: linear-gradient(135deg, #1B3352 0%, #9B7FD4 55%, #7a5ec0 100%);
+    --month-name: "February";
+    --month-colour-name: "Lavender Purple";
+    --month-colour-hex: "#9B7FD4";
+    --month-colour-mood: "Romance, imagination, softness";
+  }
+
+  .month-03 { /* March — Forest Green ← Lavender Purple */
+    --background: #4A7C59;
+    --foreground: #f0f7f2;
+    --card: #3d6849;
+    --card-foreground: #f0f7f2;
+    --popover: #3d6849;
+    --popover-foreground: #f0f7f2;
+    --primary: #a8dbb8;
+    --primary-foreground: #1a3324;
+    --secondary: #587d66;
+    --secondary-foreground: #f0f7f2;
+    --muted: #587d66;
+    --muted-foreground: #b8d9c4;
+    --accent: #6a9178;
+    --accent-foreground: #f0f7f2;
+    --destructive: #f87171;
+    --border: rgba(240,247,242,0.15);
+    --input: rgba(240,247,242,0.15);
+    --ring: #a8dbb8;
+    --sidebar: #3d6849;
+    --sidebar-foreground: #f0f7f2;
+    --sidebar-primary: #a8dbb8;
+    --sidebar-primary-foreground: #1a3324;
+    --sidebar-accent: #587d66;
+    --sidebar-accent-foreground: #f0f7f2;
+    --sidebar-border: rgba(240,247,242,0.10);
+    --sidebar-ring: #a8dbb8;
+    --month-gradient: linear-gradient(135deg, #9B7FD4 0%, #4A7C59 55%, #2e5c3a 100%);
+    --month-name: "March";
+    --month-colour-name: "Forest Green";
+    --month-colour-hex: "#4A7C59";
+    --month-colour-mood: "Growth, renewal, vitality";
+  }
+
+  .month-04 { /* April — Sky Blue ← Forest Green */
+    --background: #71B7D8;
+    --foreground: #0c2a38;
+    --card: #5ea8cb;
+    --card-foreground: #0c2a38;
+    --popover: #5ea8cb;
+    --popover-foreground: #0c2a38;
+    --primary: #0c4a6e;
+    --primary-foreground: #e0f2fe;
+    --secondary: #87c4e2;
+    --secondary-foreground: #0c2a38;
+    --muted: #87c4e2;
+    --muted-foreground: #0c4a6e;
+    --accent: #9dd0ea;
+    --accent-foreground: #0c2a38;
+    --destructive: #be123c;
+    --border: rgba(12,42,56,0.20);
+    --input: rgba(12,42,56,0.20);
+    --ring: #0c4a6e;
+    --sidebar: #5ea8cb;
+    --sidebar-foreground: #0c2a38;
+    --sidebar-primary: #0c4a6e;
+    --sidebar-primary-foreground: #e0f2fe;
+    --sidebar-accent: #87c4e2;
+    --sidebar-accent-foreground: #0c2a38;
+    --sidebar-border: rgba(12,42,56,0.15);
+    --sidebar-ring: #0c4a6e;
+    --month-gradient: linear-gradient(135deg, #4A7C59 0%, #71B7D8 55%, #4a9cbf 100%);
+    --month-name: "April";
+    --month-colour-name: "Sky Blue";
+    --month-colour-hex: "#71B7D8";
+    --month-colour-mood: "Cleansing, optimism, movement";
+  }
+
+  .month-05 { /* May — Hot Pink ← Sky Blue */
+    --background: #E85D8A;
+    --foreground: #2d0a1a;
+    --card: #d44d7a;
+    --card-foreground: #2d0a1a;
+    --popover: #d44d7a;
+    --popover-foreground: #2d0a1a;
+    --primary: #7c0032;
+    --primary-foreground: #ffe4ef;
+    --secondary: #ef7aa0;
+    --secondary-foreground: #2d0a1a;
+    --muted: #ef7aa0;
+    --muted-foreground: #7c0032;
+    --accent: #f495b4;
+    --accent-foreground: #2d0a1a;
+    --destructive: #7c0032;
+    --border: rgba(45,10,26,0.20);
+    --input: rgba(45,10,26,0.20);
+    --ring: #7c0032;
+    --sidebar: #d44d7a;
+    --sidebar-foreground: #2d0a1a;
+    --sidebar-primary: #7c0032;
+    --sidebar-primary-foreground: #ffe4ef;
+    --sidebar-accent: #ef7aa0;
+    --sidebar-accent-foreground: #2d0a1a;
+    --sidebar-border: rgba(45,10,26,0.15);
+    --sidebar-ring: #7c0032;
+    --month-gradient: linear-gradient(135deg, #71B7D8 0%, #E85D8A 55%, #c83870 100%);
+    --month-name: "May";
+    --month-colour-name: "Hot Pink";
+    --month-colour-hex: "#E85D8A";
+    --month-colour-mood: "Energy, bloom, celebration";
+  }
+
+  .month-06 { /* June — Golden Straw ← Hot Pink */
+    --background: #E6C16E;
+    --foreground: #2d1f00;
+    --card: #d4ae5a;
+    --card-foreground: #2d1f00;
+    --popover: #d4ae5a;
+    --popover-foreground: #2d1f00;
+    --primary: #78450a;
+    --primary-foreground: #fff8e8;
+    --secondary: #eece88;
+    --secondary-foreground: #2d1f00;
+    --muted: #eece88;
+    --muted-foreground: #78450a;
+    --accent: #f2d99e;
+    --accent-foreground: #2d1f00;
+    --destructive: #be123c;
+    --border: rgba(45,31,0,0.20);
+    --input: rgba(45,31,0,0.20);
+    --ring: #78450a;
+    --sidebar: #d4ae5a;
+    --sidebar-foreground: #2d1f00;
+    --sidebar-primary: #78450a;
+    --sidebar-primary-foreground: #fff8e8;
+    --sidebar-accent: #eece88;
+    --sidebar-accent-foreground: #2d1f00;
+    --sidebar-border: rgba(45,31,0,0.15);
+    --sidebar-ring: #78450a;
+    --month-gradient: linear-gradient(135deg, #E85D8A 0%, #E6C16E 55%, #c9a048 100%);
+    --month-name: "June";
+    --month-colour-name: "Golden Straw";
+    --month-colour-hex: "#E6C16E";
+    --month-colour-mood: "Light, abundance, transition";
+  }
+
+  .month-07 { /* July — Coral Red ← Golden Straw */
+    --background: #E84B35;
+    --foreground: #f8f0ee;
+    --card: #d43c28;
+    --card-foreground: #f8f0ee;
+    --popover: #d43c28;
+    --popover-foreground: #f8f0ee;
+    --primary: #fcd5cc;
+    --primary-foreground: #5c1008;
+    --secondary: #ef6450;
+    --secondary-foreground: #f8f0ee;
+    --muted: #ef6450;
+    --muted-foreground: #fcd5cc;
+    --accent: #f37e6e;
+    --accent-foreground: #f8f0ee;
+    --destructive: #fcd5cc;
+    --border: rgba(248,240,238,0.20);
+    --input: rgba(248,240,238,0.20);
+    --ring: #fcd5cc;
+    --sidebar: #d43c28;
+    --sidebar-foreground: #f8f0ee;
+    --sidebar-primary: #fcd5cc;
+    --sidebar-primary-foreground: #5c1008;
+    --sidebar-accent: #ef6450;
+    --sidebar-accent-foreground: #f8f0ee;
+    --sidebar-border: rgba(248,240,238,0.15);
+    --sidebar-ring: #fcd5cc;
+    --month-gradient: linear-gradient(135deg, #E6C16E 0%, #E84B35 55%, #bf3020 100%);
+    --month-name: "July";
+    --month-colour-name: "Coral Red";
+    --month-colour-hex: "#E84B35";
+    --month-colour-mood: "Heat, boldness, peak summer";
+  }
+
+  .month-08 { /* August — Burnt Orange ← Coral Red */
+    --background: #C96623;
+    --foreground: #f5ede4;
+    --card: #b55818;
+    --card-foreground: #f5ede4;
+    --popover: #b55818;
+    --popover-foreground: #f5ede4;
+    --primary: #fddcc4;
+    --primary-foreground: #4a1f00;
+    --secondary: #d97c3a;
+    --secondary-foreground: #f5ede4;
+    --muted: #d97c3a;
+    --muted-foreground: #fddcc4;
+    --accent: #e08e52;
+    --accent-foreground: #f5ede4;
+    --destructive: #fddcc4;
+    --border: rgba(245,237,228,0.20);
+    --input: rgba(245,237,228,0.20);
+    --ring: #fddcc4;
+    --sidebar: #b55818;
+    --sidebar-foreground: #f5ede4;
+    --sidebar-primary: #fddcc4;
+    --sidebar-primary-foreground: #4a1f00;
+    --sidebar-accent: #d97c3a;
+    --sidebar-accent-foreground: #f5ede4;
+    --sidebar-border: rgba(245,237,228,0.15);
+    --sidebar-ring: #fddcc4;
+    --month-gradient: linear-gradient(135deg, #E84B35 0%, #C96623 55%, #a04d10 100%);
+    --month-name: "August";
+    --month-colour-name: "Burnt Orange";
+    --month-colour-hex: "#C96623";
+    --month-colour-mood: "Warmth, ripening, late summer";
+  }
+
+  .month-09 { /* September — Olive ← Burnt Orange */
+    --background: #8A8B4A;
+    --foreground: #f4f4e0;
+    --card: #78793a;
+    --card-foreground: #f4f4e0;
+    --popover: #78793a;
+    --popover-foreground: #f4f4e0;
+    --primary: #e8e8aa;
+    --primary-foreground: #2d2e00;
+    --secondary: #9e9f5c;
+    --secondary-foreground: #f4f4e0;
+    --muted: #9e9f5c;
+    --muted-foreground: #e8e8aa;
+    --accent: #b0b16e;
+    --accent-foreground: #f4f4e0;
+    --destructive: #f87171;
+    --border: rgba(244,244,224,0.20);
+    --input: rgba(244,244,224,0.20);
+    --ring: #e8e8aa;
+    --sidebar: #78793a;
+    --sidebar-foreground: #f4f4e0;
+    --sidebar-primary: #e8e8aa;
+    --sidebar-primary-foreground: #2d2e00;
+    --sidebar-accent: #9e9f5c;
+    --sidebar-accent-foreground: #f4f4e0;
+    --sidebar-border: rgba(244,244,224,0.15);
+    --sidebar-ring: #e8e8aa;
+    --month-gradient: linear-gradient(135deg, #C96623 0%, #8A8B4A 55%, #636430 100%);
+    --month-name: "September";
+    --month-colour-name: "Olive";
+    --month-colour-hex: "#8A8B4A";
+    --month-colour-mood: "Harvest, earthy, contemplative";
+  }
+
+  .month-10 { /* October — Rust ← Olive */
+    --background: #B84A20;
+    --foreground: #f8ede8;
+    --card: #a43c14;
+    --card-foreground: #f8ede8;
+    --popover: #a43c14;
+    --popover-foreground: #f8ede8;
+    --primary: #fbd5c2;
+    --primary-foreground: #3d1200;
+    --secondary: #c85e34;
+    --secondary-foreground: #f8ede8;
+    --muted: #c85e34;
+    --muted-foreground: #fbd5c2;
+    --accent: #d47050;
+    --accent-foreground: #f8ede8;
+    --destructive: #fbd5c2;
+    --border: rgba(248,237,232,0.20);
+    --input: rgba(248,237,232,0.20);
+    --ring: #fbd5c2;
+    --sidebar: #a43c14;
+    --sidebar-foreground: #f8ede8;
+    --sidebar-primary: #fbd5c2;
+    --sidebar-primary-foreground: #3d1200;
+    --sidebar-accent: #c85e34;
+    --sidebar-accent-foreground: #f8ede8;
+    --sidebar-border: rgba(248,237,232,0.15);
+    --sidebar-ring: #fbd5c2;
+    --month-gradient: linear-gradient(135deg, #8A8B4A 0%, #B84A20 55%, #8a3010 100%);
+    --month-name: "October";
+    --month-colour-name: "Rust";
+    --month-colour-hex: "#B84A20";
+    --month-colour-mood: "Transition, warmth, letting go";
+  }
+
+  .month-11 { /* November — Deep Purple ← Rust */
+    --background: #4A3966;
+    --foreground: #f0ecf8;
+    --card: #3c2d58;
+    --card-foreground: #f0ecf8;
+    --popover: #3c2d58;
+    --popover-foreground: #f0ecf8;
+    --primary: #c4b4e8;
+    --primary-foreground: #1a0e33;
+    --secondary: #5e4d7a;
+    --secondary-foreground: #f0ecf8;
+    --muted: #5e4d7a;
+    --muted-foreground: #c4b4e8;
+    --accent: #72618e;
+    --accent-foreground: #f0ecf8;
+    --destructive: #f87171;
+    --border: rgba(240,236,248,0.15);
+    --input: rgba(240,236,248,0.15);
+    --ring: #c4b4e8;
+    --sidebar: #3c2d58;
+    --sidebar-foreground: #f0ecf8;
+    --sidebar-primary: #c4b4e8;
+    --sidebar-primary-foreground: #1a0e33;
+    --sidebar-accent: #5e4d7a;
+    --sidebar-accent-foreground: #f0ecf8;
+    --sidebar-border: rgba(240,236,248,0.10);
+    --sidebar-ring: #c4b4e8;
+    --month-gradient: linear-gradient(135deg, #B84A20 0%, #4A3966 55%, #2e1f4a 100%);
+    --month-name: "November";
+    --month-colour-name: "Deep Purple";
+    --month-colour-hex: "#4A3966";
+    --month-colour-mood: "Introspection, mystery, depth";
+  }
+
+  .month-12 { /* December — Dark Teal ← Deep Purple */
+    --background: #1B4A40;
+    --foreground: #e8f5f2;
+    --card: #163c33;
+    --card-foreground: #e8f5f2;
+    --popover: #163c33;
+    --popover-foreground: #e8f5f2;
+    --primary: #7fd4c4;
+    --primary-foreground: #0a1f1b;
+    --secondary: #2a5e52;
+    --secondary-foreground: #e8f5f2;
+    --muted: #2a5e52;
+    --muted-foreground: #7fd4c4;
+    --accent: #38736a;
+    --accent-foreground: #e8f5f2;
+    --destructive: #f87171;
+    --border: rgba(232,245,242,0.15);
+    --input: rgba(232,245,242,0.15);
+    --ring: #7fd4c4;
+    --sidebar: #163c33;
+    --sidebar-foreground: #e8f5f2;
+    --sidebar-primary: #7fd4c4;
+    --sidebar-primary-foreground: #0a1f1b;
+    --sidebar-accent: #2a5e52;
+    --sidebar-accent-foreground: #e8f5f2;
+    --sidebar-border: rgba(232,245,242,0.10);
+    --sidebar-ring: #7fd4c4;
+    --month-gradient: linear-gradient(135deg, #4A3966 0%, #1B4A40 55%, #0d3028 100%);
+    --month-name: "December";
+    --month-colour-name: "Dark Teal";
+    --month-colour-hex: "#1B4A40";
+    --month-colour-mood: "Rest, reflection, year's end";
+  }
+
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;

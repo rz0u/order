@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.scroll {
+  width: 300px;
+  overflow-x: auto;
+  border: 1px solid black;
+}
+.inner {
+  min-width: 600px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.flex {
+  display: flex;
+}
+.sticky {
+  position: sticky;
+  left: 0;
+  background: red;
+  z-index: 10;
+}
+.content {
+  background: lightblue;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+</style>
+</head>
+<body>
+  <h2>Grid</h2>
+  <div class="scroll">
+    <div class="inner">
+      <div class="grid">
+        <div class="sticky">Grid Sticky</div>
+        <div class="content"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div></div>
+      </div>
+    </div>
+  </div>
+  <h2>Flex</h2>
+  <div class="scroll">
+    <div class="inner">
+      <div class="flex">
+        <div class="sticky" style="width: 80px; flex-shrink: 0;">Flex Sticky</div>
+        <div class="content" style="flex: 1;"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

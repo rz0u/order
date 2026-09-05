@@ -2,6 +2,9 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { Database } from '@/types/database.types'
 
+// Routes that are always public (no auth required)
+const PUBLIC_PATHS = ['/login', '/register']
+
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
@@ -36,27 +39,20 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Protective routing
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/register') &&
-    request.nextUrl.pathname !== '/'
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
+  const { pathname } = request.nextUrl
+  const isPublicPath = PUBLIC_PATHS.some((p) => pathname.startsWith(p))
+
+  // No user + trying to access a protected route → send to login
+  if (!user && !isPublicPath) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // If user is logged in and tries to access login/register, redirect to dashboard
-  if (
-    user &&
-    (request.nextUrl.pathname.startsWith('/login') ||
-      request.nextUrl.pathname.startsWith('/register'))
-  ) {
+  // User logged in + trying to access auth pages → send to home
+  if (user && isPublicPath) {
     const url = request.nextUrl.clone()
-    url.pathname = '/dashboard' // or whatever your main protected route is
+    url.pathname = '/'
     return NextResponse.redirect(url)
   }
 

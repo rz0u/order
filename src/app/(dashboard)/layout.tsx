@@ -1,3 +1,6 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { TopHeader } from '@/components/layout/TopHeader'
 import { BottomNav } from '@/components/layout/BottomNav'
@@ -7,16 +10,25 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+
   return (
-    <div className="flex min-h-screen w-full flex-col bg-muted/40 md:flex-row">
-      <Sidebar />
-      <div className="flex flex-1 flex-col pb-16 md:pb-0">
-        <TopHeader />
-        <main className="flex-1 p-4 md:p-6 lg:p-8">
+    <div className="flex min-h-screen w-full">
+      {/* Sidebar: hidden on home page (DotMenu takes over) */}
+      {!isHome && <Sidebar />}
+
+      <div className="flex flex-1 flex-col min-w-0">
+        {/* Top header: hidden on home page */}
+        {!isHome && <TopHeader />}
+
+        <main className={isHome ? 'flex-1' : 'flex-1 p-4 md:p-6 lg:p-8 pb-20 md:pb-8'}>
           {children}
         </main>
       </div>
-      <BottomNav />
+
+      {/* Bottom nav (mobile only, not on home) */}
+      {!isHome && <BottomNav />}
     </div>
   )
 }
